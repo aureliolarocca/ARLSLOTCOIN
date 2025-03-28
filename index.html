@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slot Machine</title>
+  </head>
+  <body>
+    <div class="banner2">
+      <p id="chiusuraBanner2">X</p>
+      <p id="banner2ProblemDescription">IL BET E' TROPPO ALTO</p>
+    </div>
+    <div class="banner"><p id="chiusuraBanner">X</p></div>
+    <div class="giocoBonus">
+      <div class="displayGiocoBonus"></div>
+      <div class="container-vite">
+        <div class="container-vite-dev">
+          <button id="vitaDev1"></button><button id="vitaDev2"></button
+          ><button id="vitaDev3"></button><button id="vitaDev4"></button>
+        </div>
+        <div class="container-vite-bug">
+          <button id="vitaBug1"></button><button id="vitaBug2"></button
+          ><button id="vitaBug3"></button><button id="vitaBug4"></button>
+        </div>
+      </div>
+
+      <div class="displayPBonus">
+        <p id="pBonus">
+          SCONFIGGI IL BUG PER OTTENERE FINO A 1000 VOLTE LA TUA PUNTATA
+        </p>
+      </div>
+      <button id="attacca">INIZIA</button>
+      <div class="displayMoneyBonus"><p id="moneyBonus">0</p></div>
+    </div>
+    <div class="grid-container">
+      <div class="top-left">
+        <p>PROVA A SCOMMETTERE</p>
+
+        <div id="divLv1">
+          <p>X64</p>
+          <p id="lv1">1280</p>
+        </div>
+        <div id="divLv2">
+          <p>X32</p>
+          <p id="lv2">640</p>
+        </div>
+        <div id="divLv3">
+          <p>X16</p>
+          <p id="lv3">320</p>
+        </div>
+        <div id="divLv4">
+          <p>X8</p>
+          <p id="lv4">160</p>
+        </div>
+        <div id="divLv5">
+          <p>X4</p>
+          <p id="lv5">80</p>
+        </div>
+        <div id="divLv6">
+          <p>X2</p>
+          <p id="lv6">40</p>
+        </div>
+        <div class="container-btn-gambling">
+          <button id="scommettiBtn">RISCHIA</button>
+          <button id="ritiraBtn">RITIRA</button>
+        </div>
+      </div>
+      <div class="top-right"></div>
+      <div class="center">
+        <div class="center-top">
+          <div class="displayMoney">
+            <p id="money">1000</p>
+            <img src="CoinRullo.png" alt="" />
+          </div>
+        </div>
+        <div class="center-bottom">
+          <div class="rullo1"></div>
+          <div class="rullo2"></div>
+          <div class="rullo3"></div>
+        </div>
+      </div>
+      <div class="bottom">
+        <button class="info">!</button><button class="moneyBetMeno">-</button>
+        <div class="moneyBetDisplay">
+          <p>TOTAL BET</p>
+          <p id="bet"></p>
+        </div>
+        <button class="moneyBetPiu">+</button>
+        <div class="displayWin">
+          <p>Hai Vinto</p>
+          <p id="sommaVinta">0</p>
+          <p>Scommetti o Ritira</p>
+        </div>
+        <button class="spin">SPIN</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

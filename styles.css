@@ -1,0 +1,586 @@
+body {
+  margin: 0;
+  padding: 0;
+
+  width: 100vw;
+  height: 100vh;
+  background-color: #f0f0f0;
+  background-image: url(sfondo.png);
+  background-position: center;
+  background-size: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+.giocoBonus {
+  width: 80%;
+  height: 80%;
+  position: absolute;
+  border: 1px solid black;
+  z-index: 999;
+  top: 5.5rem;
+  background-color: black;
+  border-radius: 1rem;
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  animation: slideInFromLeft 3.5s ease-out forwards;
+  margin: 0 auto;
+}
+/*ANIMAZIONE gioco Bonus*/
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%) scale(0.95);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(10%) scale(1.02);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+@keyframes slideOutToLeft {
+  0% {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+  40% {
+    transform: translateX(-10%) scale(1.02);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%) scale(0.95);
+    opacity: 0;
+  }
+}
+.displayGiocoBonus {
+  width: 50%;
+  height: 60%;
+
+  background-image: url(SLEEPGIF.gif);
+  background-position: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.container-vite {
+  width: 50%;
+  height: 10%;
+  border: 1px solid greenyellow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.container-vite-dev,
+.container-vite-bug {
+  border: 1px solid white;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.container-vite-dev button {
+  background-image: url(CoinRullo.png);
+  background-position: center;
+  background-size: contain;
+}
+.container-vite-bug button {
+  background-image: url(bug_umanizzato.jpg);
+  background-position: center;
+  background-size: contain;
+}
+
+.container-vite-dev button,
+.container-vite-bug button {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: none;
+  background-color: greenyellow;
+  cursor: default;
+  pointer-events: none;
+}
+#pBonus {
+  display: none;
+  transition: 1s all;
+}
+.displayMoneyBonus {
+  width: 20%;
+  padding: 0.2rem;
+  background-color: rgb(173, 255, 47, 0.3);
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+}
+#moneyBonus {
+  transition: all 1s;
+}
+#attacca {
+  width: 8rem;
+  height: 2rem;
+  font-size: 0.7rem;
+  border: none;
+  color: black;
+  background-color: greenyellow;
+  border-radius: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 1.5s;
+}
+@keyframes vibra {
+  0% {
+    transform: translate(0);
+  }
+  25% {
+    transform: translate(-2px, 2px);
+  }
+  50% {
+    transform: translate(2px, -2px);
+  }
+  75% {
+    transform: translate(-2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    " one one center two two "
+    ". .  center . ."
+    "bottom bottom  bottom bottom";
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 10px;
+  width: 50rem !important;
+  height: 20rem !important;
+  background-color: #ffffff;
+  border-radius: 1rem;
+
+  margin: 0 auto;
+}
+@keyframes gridShake {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  10% {
+    transform: translate(-2px, 2px) rotate(-0.5deg);
+  }
+  20% {
+    transform: translate(2px, -2px) rotate(0.5deg);
+  }
+  30% {
+    transform: translate(-3px, 1px) rotate(-0.3deg);
+  }
+  40% {
+    transform: translate(3px, -1px) rotate(0.3deg);
+  }
+  50% {
+    transform: translate(-2px, 2px) rotate(-0.2deg);
+  }
+  60% {
+    transform: translate(2px, -2px) rotate(0.2deg);
+  }
+  70% {
+    transform: translate(-1px, 1px) rotate(-0.1deg);
+  }
+  80% {
+    transform: translate(1px, -1px) rotate(0.1deg);
+  }
+  90% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+}
+
+.top-left {
+  grid-area: one;
+  background-color: #ffcccb;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  animation: fadeOutAndHide 3s ease-in-out forwards;
+}
+
+.top-left div {
+  width: 7rem;
+  height: 1.2rem;
+  border-radius: 2rem;
+  font-size: 0.5rem;
+  padding: 0.2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: none;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.top-left div p:nth-of-type(2) {
+  color: greenyellow;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+.top-left div:nth-of-type(7) {
+  width: 100%;
+  height: 100%;
+  background-color: none !important;
+  border-radius: 0;
+}
+#scommettiBtn,
+#ritiraBtn {
+  width: 40%;
+  height: 100%;
+  font-size: 0.7rem;
+  border-radius: 1rem;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+}
+#scommettiBtn {
+  background: linear-gradient(
+    to top,
+    #b30000,
+    #ff4d4d
+  ); /* Gradiente rosso intenso */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), inset 0 -3px 5px rgba(0, 0, 0, 0.6),
+    inset 0 3px 5px rgba(255, 255, 255, 0.3); /* Ombra interna ed esterna */
+}
+#ritiraBtn {
+  background: linear-gradient(
+    to top,
+    #08a32f,
+    #0fb41f
+  ); /* Gradiente rosso intenso */
+  box-shadow: 0 4px 10px rgba(9, 74, 120, 0.5),
+    inset 0 -3px 5px rgba(183, 10, 10, 0.6), inset 0 2px 5px rgba(79, 7, 7, 0.3); /* Ombra interna ed esterna */
+}
+.top-right {
+  grid-area: two;
+
+  background-image: url(SLEEPGIF.gif);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: 1px solid greenyellow;
+}
+
+.center {
+  grid-area: center;
+  background-color: #cce7ff;
+  display: grid;
+  grid-template-areas:
+    "one"
+    "two";
+  grid-template-rows: 1fr 2.5fr;
+  grid-template-columns: 1fr;
+  gap: 0px;
+}
+
+.center-top {
+  grid-area: one two;
+  border: 1px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.9),
+    rgba(255, 215, 0, 0.4),
+    rgba(0, 0, 0, 0.9)
+  );
+}
+.displayMoney {
+  width: 5rem;
+  height: 1.5rem;
+  border: 1px solid black;
+  border-radius: 0.5rem;
+  background-color: rgb(0, 0, 0, 0.4);
+  border: none;
+  display: flex;
+  justify-content: start;
+  padding-left: 0.5rem;
+  align-items: center;
+  color: white;
+  font-weight: 100;
+  position: relative;
+  box-shadow: 2px 2px 10px greenyellow;
+}
+.displayMoney img {
+  position: absolute;
+  width: 1.5rem;
+  height: 1.5rem;
+  top: 0;
+  right: 0;
+}
+
+.center-bottom {
+  grid-area: two;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(228, 230, 231);
+}
+.center-bottom div {
+  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.rullo1 {
+  background-image: url(cartoon_character_converted.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: 1s all;
+}
+.rullo2 {
+  background-image: url(bug_umanizzato.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: 1.5s all;
+}
+.rullo3 {
+  background-image: url(CoinRullo.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: 2s all;
+}
+.bottom {
+  grid-area: bottom;
+  background-color: #d1ffcc;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.9),
+    rgba(255, 215, 0, 0.4),
+    rgba(0, 0, 0, 0.9)
+  );
+}
+
+.info {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(
+    to top,
+    #b30000,
+    #ff4d4d
+  ); /* Gradiente rosso intenso */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), inset 0 -3px 5px rgba(0, 0, 0, 0.6),
+    inset 0 3px 5px rgba(255, 255, 255, 0.3); /* Ombra interna ed esterna */
+  color: white;
+  font-size: 0.9rem; /* Adatta il testo per le dimensioni */
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+.banner {
+  display: none;
+}
+
+.banner.active {
+  position: absolute;
+  width: 50%;
+  height: 90%;
+  border: 1px solid black;
+  background-color: rgba(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  border: 5px solid greenyellow;
+}
+.banner2 {
+  display: none;
+}
+.banner2.active {
+  position: absolute;
+  width: 10rem;
+  height: 5rem;
+  background-color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  top: 5px;
+  left: 10px;
+  border: none;
+  border-radius: 1rem;
+}
+.banner2 p {
+  color: greenyellow;
+  font-size: 0.6rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+#chiusuraBanner,
+#chiusuraBanner2 {
+  color: greenyellow;
+  font-size: 0.6rem;
+  font-weight: 100;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  cursor: pointer;
+}
+
+.moneyBetMeno {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(
+    to top,
+    #006eb3,
+    #181492
+  ); /* Gradiente rosso intenso */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), inset 0 -3px 5px rgba(0, 0, 0, 0.6),
+    inset 0 2px 5px rgba(79, 77, 77, 0.3); /* Ombra interna ed esterna */
+  color: white;
+  font-size: 1rem; /* Adatta il testo per le dimensioni */
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+.moneyBetPiu {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(
+    to top,
+    #006eb3,
+    #181492
+  ); /* Gradiente rosso intenso */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5), inset 0 -3px 5px rgba(0, 0, 0, 0.6),
+    inset 0 2px 5px rgba(79, 77, 77, 0.3); /* Ombra interna ed esterna */
+  color: white;
+  font-size: 1rem; /* Adatta il testo per le dimensioni */
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+
+.moneyBetDisplay {
+  border-radius: 0.5rem;
+  width: 2.5rem;
+  height: 2rem;
+  font-size: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(0, 0, 0, 0.4);
+  box-shadow: 1px 1px 5px grey;
+  padding: 0.3rem;
+  margin: 0 -1rem 0 -1rem;
+}
+
+.moneyBetDisplay p:nth-of-type(1) {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+  font-size: 0.3rem;
+}
+
+.moneyBetDisplay p:nth-of-type(2) {
+  color: white;
+  font-size: 0.5rem;
+  font-weight: 300;
+}
+
+.displayWin {
+  width: 7rem;
+  height: 3rem;
+  background-color: rgb(0, 0, 0, 0.4);
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 1rem;
+}
+.displayWin p:nth-of-type(1) {
+  font-size: 0.6rem;
+  text-shadow: 1px 1px 1px rgb(255, 255, 255, 0.3);
+  text-decoration: underline;
+}
+.displayWin p:nth-of-type(2) {
+  font-size: 0.8rem;
+  color: greenyellow;
+}
+.displayWin p:nth-of-type(3) {
+  font-size: 0.5rem;
+}
+.spin {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(
+    to top,
+    #08a32f,
+    #0fb41f
+  ); /* Gradiente rosso intenso */
+  box-shadow: 0 4px 10px rgba(9, 74, 120, 0.5),
+    inset 0 -3px 5px rgba(183, 10, 10, 0.6), inset 0 2px 5px rgba(79, 7, 7, 0.3); /* Ombra interna ed esterna */
+  color: white;
+  font-size: 0.7rem; /* Adatta il testo per le dimensioni */
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+.bottom button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media (min-width: 1201px) {
+  html {
+    font-size: 15px;
+  }
+}
+@media (max-width: 1200px) {
+  html {
+    font-size: 11px;
+  }
+  .grid-container {
+    display: grid;
+    grid-template-areas:
+      "one one center two two "
+      " . . center . ."
+      ". bottom  bottom bottom .";
+    grid-template-rows: 2fr 1fr 0.5fr;
+    grid-template-columns: 1fr 1fr 3fr 1fr 1fr;
+    gap: 5px;
+    width: 80%;
+    height: 70%;
+    background-color: #ffffff;
+    border: 2px solid #cccccc;
+  }
+}
