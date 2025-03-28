@@ -152,6 +152,10 @@ async function confrontoPersonaggi(x) {
   } else {
     console.log("partita bonus");
     bonus();
+    money += moneyBonus;
+    document.getElementById("money").innerHTML = money;
+    moneyBonus = 0;
+    console.log(money);
   }
   return x;
 }
@@ -163,9 +167,15 @@ function startMiniBonus() {
   btnBetMeno.disabled = true;
   btnBetPiu.disabled = true;
   btnSpin.disabled = true;
-
+  document.querySelector(".top-left").backgroundColor = "none";
   scommettiBtn.disabled = false;
   ritiraBtn.disabled = false;
+  scommettiBtn.style.backgroundColor = "#b30000";
+  scommettiBtn.style.boxShadow =
+    "0 4px 10px rgba(0, 0, 0, 0.5), inset 0 -3px 5px rgba(0, 0, 0, 0.6),inset 0 3px 5px rgba(255, 255, 255, 0.3)";
+  ritiraBtn.style.backgroundColor = "#0fb41f";
+  ritiraBtn.style.boxShadow =
+    " 0 4px 10px rgba(9, 74, 120, 0.5),inset 0 -3px 5px rgba(183, 10, 10, 0.6), inset 0 2px 5px rgba(79, 7, 7, 0.3); ";
 
   return new Promise((resolve, reject) => {
     scommettiBtn.addEventListener("click", () => {
@@ -178,6 +188,10 @@ function startMiniBonus() {
       // Qui intendevi disabilitare il pulsante?
       scommettiBtn.disabled = true;
       ritiraBtn.disabled = true;
+      scommettiBtn.style.backgroundColor = "rgb(0,0,0, 0.5)";
+      ritiraBtn.style.backgroundColor = "rgb(0,0,0, 0.5)";
+      document.querySelector(".top-left").backgroundColor = "rgb(0,0,0, 0.5)";
+
       resolve("ritirato");
     });
   });
@@ -188,6 +202,9 @@ async function sceltaMiniGame() {
   let risultatoScelta = await startMiniBonus();
   if (lv === 1) {
     document.querySelector("#scommettiBtn").disabled = true;
+    scommettiBtn.style.backgroundColor = "rgb(0,0,0, 0.5)";
+    ritiraBtn.style.backgroundColor = "rgb(0,0,0, 0.5)";
+    document.querySelector(".top-left").backgroundColor = "rgb(0,0,0, 0.5)";
   }
   if (risultatoScelta === "scommesso") {
     console.log("Siam dentro la funzione async");
@@ -242,6 +259,9 @@ async function sceltaMiniGame() {
         btnBetMeno.disabled = false;
         btnBetPiu.disabled = false;
         btnSpin.disabled = false;
+        scommettiBtn.style.backgroundColor = "rgb(0,0,0, 0.5)";
+        ritiraBtn.style.backgroundColor = "rgb(0,0,0, 0.5)";
+        document.querySelector(".top-left").backgroundColor = "rgb(0,0,0, 0.5)";
       }, 2500);
     }
   }
@@ -276,6 +296,9 @@ async function sceltaMiniGame() {
     btnBetMeno.disabled = false;
     btnBetPiu.disabled = false;
     btnSpin.disabled = false;
+    scommettiBtn.style.backgroundColor = "rgb(0,0,0, 0.5)";
+    ritiraBtn.style.backgroundColor = "rgb(0,0,0, 0.5)";
+    document.querySelector(".top-left").backgroundColor = "rgb(0,0,0, 0.5)";
   }
 }
 
@@ -308,7 +331,7 @@ function startBonus() {
       document.querySelector(".displayGiocoBonus").style.backgroundImage =
         'url("STARTBONUSGIF_last_frame.png")';
       document.querySelector("#attacca").style.boxShadow =
-        "3px 3px 5px 20px rgb(162, 155, 155)";
+        "2px 2px 2px  rgb(162, 155, 155)";
       resolve("FINE PREPARATIVI PARTITA BONUS");
     }, 12280);
   });
@@ -328,6 +351,7 @@ function eventListenerBonusStart() {
         document.querySelector("#attacca").style.boxShadow = "none";
         document.querySelector("#pBonus").style.display = "flex";
         document.querySelector("#attacca").textContent = "ATTACCA";
+        document.querySelector("#pBonus").style.fontSize = "0.6rem";
       }, 500);
 
       setTimeout(() => {
@@ -392,7 +416,7 @@ function eventListenerBonusPrompt() {
         }, 10000);
         setTimeout(() => {
           document.getElementById("moneyBonus").style.color = "white";
-          document.getElementById("moneyBonus").style.fontSize = "1rem";
+          document.getElementById("moneyBonus").style.fontSize = "0.5rem";
         }, 11000);
         if (viteBug === 1) {
           setTimeout(() => {
@@ -412,7 +436,8 @@ function eventListenerBonusPrompt() {
           }, 12000);
           setTimeout(() => {
             document.getElementById("pBonus").style.color = "white";
-            document.getElementById("pBonus").style.fontSize = "1rem";
+            document.getElementById("pBonus").style.fontSize = "0.7rem";
+            document.getElementById("moneyBonus").style.fontSize = "0.5rem";
           }, 12500);
           setTimeout(() => {
             document.querySelector(".displayGiocoBonus").style.backgroundImage =
@@ -421,6 +446,9 @@ function eventListenerBonusPrompt() {
           setTimeout(() => {
             document.querySelector(".displayGiocoBonus").style.backgroundImage =
               'url("SLEEPGIF.gif")';
+            money += moneyBonus;
+            document.getElementById("money").innerHTML = money;
+            console.log(money);
           }, 25000);
           setTimeout(() => {
             document.querySelector(".giocoBonus").style.animation =
@@ -429,11 +457,8 @@ function eventListenerBonusPrompt() {
             btnBetPiu.disabled = false;
             btnSpin.disabled = false;
           }, 28000);
+          setTimeout(() => {}, 29500);
           setTimeout(() => {
-            document.getElementById("money").innerHTML = money + moneyBonus;
-          }, 29500);
-          setTimeout(() => {
-            moneyBonus = 0;
             document.querySelector(".giocoBonus").style.display = "none";
           }, 30000);
           setTimeout(() => {
@@ -457,11 +482,12 @@ function eventListenerBonusPrompt() {
             document.getElementById("attacca").innerHTML = "INIZIA";
             document.getElementById("moneyBonus").innerHTML = 0;
             document.getElementById("moneyBonus").style.color = "white";
-            document.getElementById("moneyBonus").style.fontSize = "1rem";
+            document.getElementById("moneyBonus").style.fontSize = "0.5rem";
             document.querySelector(".rullo1").style.display = "block";
             document.querySelector(".rullo2").style.display = "block";
             document.querySelector(".giocoBonus").style.animation =
               "slideInFromLeft 3.5s ease-out forwards";
+            moneyBonus = 0;
           }, 30500);
         } else {
           setTimeout(() => {
@@ -493,7 +519,8 @@ function eventListenerBonusPrompt() {
           }, 12000);
           setTimeout(() => {
             document.getElementById("pBonus").style.color = "white";
-            document.getElementById("pBonus").style.fontSize = "1rem";
+            document.getElementById("pBonus").style.fontSize = "0.8rem";
+            document.getElementById("moneyBonus").style.fontSize = "0.5rem";
           }, 12500);
           setTimeout(() => {
             document.querySelector(".displayGiocoBonus").style.backgroundImage =
@@ -509,13 +536,12 @@ function eventListenerBonusPrompt() {
             btnBetMeno.disabled = false;
             btnBetPiu.disabled = false;
             btnSpin.disabled = false;
-          }, 28000);
-          setTimeout(() => {
             money += moneyBonus;
             document.getElementById("money").innerHTML = money;
-          }, 29500);
+            console.log(money);
+          }, 28000);
+
           setTimeout(() => {
-            moneyBonus = 0;
             document.querySelector(".giocoBonus").style.display = "none";
           }, 30000);
           setTimeout(() => {
@@ -539,11 +565,12 @@ function eventListenerBonusPrompt() {
             document.getElementById("attacca").innerHTML = "INIZIA";
             document.getElementById("moneyBonus").innerHTML = 0;
             document.getElementById("moneyBonus").style.color = "white";
-            document.getElementById("moneyBonus").style.fontSize = "1rem";
+            document.getElementById("moneyBonus").style.fontSize = "0.5rem";
             document.querySelector(".rullo1").style.display = "block";
             document.querySelector(".rullo2").style.display = "block";
             document.querySelector(".giocoBonus").style.animation =
               "slideInFromLeft 3.5s ease-out forwards";
+            moneyBonus = 0;
           }, 30500);
         } else {
           setTimeout(() => {
